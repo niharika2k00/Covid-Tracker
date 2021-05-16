@@ -1,0 +1,40 @@
+.Button {
+    padding: 4px auto 1px auto;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+    color: rgb(255, 255, 255);
+}
+
+.Button .Button-btn {
+    /* font-family: "Raleway", sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: 0.1s;
+    margin-top: 1px;
+    text-decoration: none;
+    border: 2px solid rgb(248, 230, 230);
+    background-color: #ef476f;
+    color: rgb(255, 255, 255);
+}
+
+.Button .Button-btn:hover {
+    background: #f57694;
+    border: 3px double #ffe66d;
+}
+
+#btncenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: -50%;
+    /* left: 50%; */
+}
