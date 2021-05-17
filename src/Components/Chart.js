@@ -2,30 +2,68 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import '../Styles/chart.css';
-import { fetch_DailyData } from './API/Api.js';
-import { Line, Bar } from 'react-chartjs-2';
+import { fetch_DailyData, fetch_StateData } from './API/Api.js';
+import { Line, Bar, Doughnut } from 'react-chartjs-2';
 
 
-const Chart = ({ data, country }) => {
+const Chart = ({ data, country, state }) => {
 
     const { confirmed, recovered, deaths } = data;
-    const [dailyData, setDailyData] = useState([]);   // taking array as we have to map this later
+    const [dailyData, setDailyData] = useState([]);   // GLOBAL DATA ---- taking array as we have to map this later
+    const [stateData, setStateData] = useState([]); // taking array as we have]
 
 
-    // ------------------     DATA FOR THE LINE CHART GLOBAL   ----------------
+
+    // ------------------     DATA FOR THE LINE CHART         * GLOBAL DATA For 1 year *        ----------------
     useEffect(() => {
         const DAILY_DATA = async () => {
             const INFO = await fetch_DailyData();
             setDailyData(INFO);
         }
-
         DAILY_DATA();
     }, []);
-
 
     useEffect(() => {
         console.log(dailyData);  // array of obj [{} {} {}]
     }, [dailyData]);
+
+
+
+
+
+    //  ------------------     DATA FOR THE LINE CHART         * State - wise Data fetching *        ----------------
+    useEffect(() => {
+        const STATE_DATA = async () => {
+            const Result_Arr = await fetch_StateData();
+            console.log(Result_Arr);
+
+            Result_Arr.sort(function (a, b) {
+                return a["state"].localeCompare(b["state"]);
+            });
+
+            console.log(Result_Arr);
+            setStateData(Result_Arr);
+        }
+        STATE_DATA();
+    }, [])
+
+
+
+    useEffect(() => {
+
+        stateData.map((each_StateObj) => {
+            if (each_StateObj.state === state) {
+                console.log(each_StateObj)
+                setStateData(each_StateObj)
+                return each_StateObj;
+            }
+            else {
+                console.log("No Match Found");
+            }
+        })
+
+    }, [])
+
 
 
 
@@ -73,7 +111,7 @@ const Chart = ({ data, country }) => {
                     datasets: [
                         {
                             label: 'People',
-                            backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                            backgroundColor: ['#cdb4db', '#b5e48c', 'crimson'],
                             data: [confirmed.value, recovered.value, deaths.value],
                         },
                     ],
@@ -89,10 +127,37 @@ const Chart = ({ data, country }) => {
 
 
 
+    const Doughnut_Graph = (
+        confirmed ? (
+            <Doughnut
+                data={{
+                    labels: ['Infected', 'Recovered', 'Deaths'],
+                    datasets: [
+                        {
+                            label: 'People',
+                            data: [stateData.totalCases, stateData.recovered + stateData.recoveredNew, stateData.deaths + stateData.deathsNew],
+                            // data: [confirmed.value, recovered.value, deaths.value],
+                            backgroundColor: ['#cdb4db', '#b5e48c', 'crimson'],
+                            hoverOffset: 1
+                        },
+                    ],
+                }}
+            />
+        ) : null
+    );
+
+
+
+
     return (
         <div>
             <div>
                 {country ? Bar_Chart : Line_Graph}
+            </div>
+
+            <div>
+                {Doughnut_Graph}
+
             </div>
         </div>
     )

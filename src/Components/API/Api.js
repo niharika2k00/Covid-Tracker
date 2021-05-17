@@ -5,7 +5,7 @@ const URL = "https://covid19.mathdro.id/api";
 
 
 
-//  ------------  FETCHING GLOBAL DATA  ------------
+//  ------------  FETCHING GLOBAL DATA (for Bar Chart)  ------------
 export const fetchData = async (country) => {
 
     let changeable_Url = URL;
@@ -34,12 +34,12 @@ export const fetchData = async (country) => {
 
 
 
-//  ------------  FETCHING DAILY DATA SET  ------------
+//  ------------  FETCHING GLOBAL DAILY DATA SET for 1 year (for Line Chart) ------------
 export const fetch_DailyData = async () => {
     try {
         const response = await axios.get(`${URL}/daily`);
         const { data } = response;      // destructure
-        // console.log(data);               // whole Array of Objects [{} {}]
+        console.log(data);               // whole Array of Objects [{} {}]
 
         const usableData = data.map((obj) => (
             {
@@ -70,6 +70,33 @@ export const fetch_Countries = async () => {
         return country_Name;
 
     } catch (error) {
+        console.log(error);
+    }
+};
+
+
+
+
+// --------------  Fetching data for each STATE IN INDIA ------------------------------
+export const fetch_StateData = async () => {
+    try {
+        const response = await axios.get('https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true');
+        const { data } = response;
+        console.log(data);
+
+        const Usable_State_Data = data.regionData.map((obj) => (    // regionData ---> [{} {} {}]
+            {
+                confirmed: obj.totalInfected,                       /* OBJ --> each array element */
+                recovered: obj.recovered + obj.newRecovered,
+                deaths: obj.deceased + obj.newDeceased,
+                state: obj.region
+            }
+        ));
+        console.log(Usable_State_Data);
+        return Usable_State_Data;
+        // return data;
+    }
+    catch (error) {
         console.log(error);
     }
 };
