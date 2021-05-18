@@ -64,7 +64,7 @@ export const fetch_Countries = async () => {
     try {
         const response = await axios.get(`${URL}/countries`);
         const { data } = response;
-        console.log(data.countries);               // whole Array of Objects [{} {}]
+        // console.log(data.countries);               // whole Array of Objects [{} {}]
 
         const country_Name = data.countries.map((obj) => obj.name);
         return country_Name;
@@ -82,7 +82,7 @@ export const fetch_StateData = async () => {
     try {
         const response = await axios.get('https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true');
         const { data } = response;
-        console.log(data);
+        // console.log(data);
 
         const Usable_State_Data = data.regionData.map((obj) => (    // regionData ---> [{} {} {}]
             {

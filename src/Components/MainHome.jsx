@@ -11,9 +11,9 @@ import '../App.css';
 
 const MainHome = () => {
 
-    const [data, setData] = useState({});
-    const [country, setCountry] = useState('');
-    const [state, setState] = useState('');
+    const [data, setData] = useState({});               // world wide data
+    const [country, setCountry] = useState('');          // country picker 
+    const [state, setState] = useState('');              //  determine state using geolocation
 
 
 
@@ -44,7 +44,6 @@ const MainHome = () => {
 
     // Getting Users Location  -----
     const Current_Location = async (position) => {
-
         try {
             const { latitude, longitude } = position.coords;
             console.log(latitude, longitude);
@@ -68,10 +67,10 @@ const MainHome = () => {
     };
 
 
+
     //  ----->    Method to get the position of the device
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(Current_Location, console.log);
-
     }, []);
 
 
