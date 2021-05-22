@@ -15,6 +15,27 @@ section {
     padding: 2rem 0;
 }
 
+#infected {
+    font-family: 'Newsreader', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #006d77;
+}
+
+#recovered {
+    font-family: 'Newsreader', serif;
+    color: #38b000;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+#death {
+    font-family: 'Newsreader', serif;
+    color: crimson;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
 section .section-title {
     text-align: center;
     color: #007b5e;
@@ -76,7 +97,7 @@ section .section-title {
 
 .frontside .card, .backside .card {
     height: 12rem;
-    width: 20rem;
+    width: 24rem;
 }
 
 .backside .card a {
@@ -84,6 +105,12 @@ section .section-title {
     color: #007b5e !important;
 }
 
-.frontside .card .card-title, .backside .card .card-title {
-    color: #007b5e !important;
+.icon {
+    padding-top: 1rem;
+    ;
+}
+
+.ico_big {
+    color: crimson;
+    font-size: 1.8rem;
 }

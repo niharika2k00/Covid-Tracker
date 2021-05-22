@@ -10,22 +10,35 @@ export const fetchData = async (country) => {
 
     let changeable_Url = URL;
     if (country) {
-        changeable_Url = `${URL}/countries/${country}`;
+        // https://covid19.mathdro.id/api/countries/Algeria/confirmed
+        changeable_Url = `${URL}/countries/${country}/confirmed`;                   // In original  ${URL}/countries/${country}
     }
 
     try {
         console.log("hello");
-        // const response = await axios.get(URL);
-        const { data } = await axios.get(changeable_Url);
+        // const response = await axios.get(URL);    
+        // const { data } = await axios.get(changeable_Url);
         // const { confirmed, recovered } = data
-        // console.log(data);
+
+        const response = await axios.get(changeable_Url);
+        const Obj = response.data[0];
+
 
         const usableData = {
-            confirmed: data.confirmed,
+            /* confirmed: data.confirmed,
             recovered: data.recovered,
             deaths: data.deaths,
             lastUpdate: data.lastUpdate,
+           */
+
+            confirmed: Obj.confirmed,
+            recovered: Obj.recovered,
+            deaths: Obj.deaths,
+            lastUpdate: Obj.lastUpdate,
+            latitude: Obj.lat,
+            longitude: Obj.long
         };
+        console.log(usableData);
         return usableData;
     } catch (error) {
         console.log(error);
@@ -39,7 +52,7 @@ export const fetch_DailyData = async () => {
     try {
         const response = await axios.get(`${URL}/daily`);
         const { data } = response;      // destructure
-        console.log(data);               // whole Array of Objects [{} {}]
+        // console.log(data);               // whole Array of Objects [{} {}]
 
         const usableData = data.map((obj) => (
             {
@@ -48,7 +61,7 @@ export const fetch_DailyData = async () => {
                 date: obj.reportDate,
             }
         ));
-        console.log(usableData);
+        // console.log(usableData);
         return usableData;
 
     } catch (error) {

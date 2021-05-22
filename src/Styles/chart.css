@@ -1,0 +1,38 @@
+#state_name {
+    background-color: #fdf2f2;
+    color: crimson;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+}
+
+#details {
+    margin-top: 6rem;
+}
+
+#details p {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 1px;
+}
+
+.infected {
+    color: #00b2ca;
+    background-color: #d2eff3;
+}
+
+.recovered {
+    color: #7aac2a;
+    background-color: #dfecc9;
+}
+
+.death {
+    color: crimson;
+    background-color: rgb(245, 199, 208);
+}

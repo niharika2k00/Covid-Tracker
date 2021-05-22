@@ -6,6 +6,7 @@ import COUNTRY from './Country.js';
 import CARDS from './CardsDisplay.js';
 import { fetchData } from './API/Api.js';
 import '../App.css';
+import "../Styles/country.css";
 
 
 
@@ -22,12 +23,12 @@ const MainHome = () => {
         const fetched_DATA = await fetchData();
         console.log(fetched_DATA);
         setData(fetched_DATA);
-    }, [setData]);
+    }, []);
 
 
     useEffect(() => {
         console.log(data);
-    }, [setData])
+    }, [])
 
 
 
@@ -68,7 +69,7 @@ const MainHome = () => {
 
 
 
-    //  ----->    Method to get the position of the device
+    //  ------>    Method to get the position of the device
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(Current_Location, console.log);
     }, []);
@@ -76,20 +77,36 @@ const MainHome = () => {
 
 
     return (
-        <div>
-            <Container className="self_container">
-                <CARDS
-                    data={data}
-                />
+        <div style={{ backgroundColor: "rgba(240, 240, 240, 0.849)" }} >
+            <div className="self_container" >
+                <div style={{ marginTop: "0px", paddingTop: "0px" }} className="country_search">
+                    <img src="https://i.ibb.co/7QpKsCX/image.png" alt="COVID - 19 TRACKER"
+                        // width="400rem"
+                        // height="80rem"
+                        id="heading"
+                        className="country_search"
+                        style={{ alignItems: "center", justifyContent: "center", textAlign: "center" }}
+                    />
+                </div>
+
+                {data && country &&
+                    < CARDS
+                        data={data}
+                        country={country}
+                    />}
+
                 <COUNTRY
                     country_ChangeHnadler={country_ChangeHnadler}
                 />
-                <CHART
-                    data={data}
-                    country={country}
-                    state={state}
-                />
-            </Container>
+
+                {state && data &&
+                    <CHART
+                        data={data}
+                        country={country}
+                        state={state}
+                    />
+                }
+            </div>
         </div>
     )
 }

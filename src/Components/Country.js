@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { fetch_Countries } from './API/Api.js';
-
+import '../Styles/country.css';
 
 
 const Country = ({ country_ChangeHnadler }) => {
@@ -19,22 +19,22 @@ const Country = ({ country_ChangeHnadler }) => {
 
 
     useEffect(() => {
-        console.log(countries);  // array of obj [{} {} {}]
+        // console.log(countries);  // array of obj [{} {} {}]
     }, [countries]);
 
 
 
     return (
-        <div>
-            <form onChange={(e) => { country_ChangeHnadler(e.target.value) }} >
-                <select className="form-select" aria-label="Default select example">
+        <div style={{ marginTop: "4rem", paddingTop: "1rem" }}>
+            <h3 className="WWC" >World Wide COVID Live Updates  </h3>
+            <form onChange={(e) => { country_ChangeHnadler(e.target.value) }} className=" country_search"  >
+                <select className="form-select " aria-label="Default select example" id="panel"  >
                     <option selected value="global">Global</option>
                     {
                         countries.map((country, i) =>
                             <option value={country} key={i} >{country}</option>
                         )
                     }
-
                 </select>
             </form>
         </div>

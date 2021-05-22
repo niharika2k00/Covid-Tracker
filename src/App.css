@@ -11,8 +11,20 @@
 }
 
 .self_container {
-    margin-top: 1.8rem;
+    margin: 1.2rem 2rem;
     margin-bottom: 4rem;
-    padding-top: 1.8rem;
+    padding: .2rem 1.4rem;
     padding-bottom: 4rem;
+}
+
+#heading {
+    width: 20rem;
+    height: 6rem;
+}
+
+@media (max-width: 450px) {
+    #heading {
+        width: 14rem;
+        height: 4rem;
+    }
 }

@@ -1,0 +1,30 @@
+.country_search {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#panel {
+    border-radius: 5rem;
+    border: 2.6px solid rgb(124, 118, 118);
+    padding: .4rem;
+    box-shadow: inset 3px 2px 2px #babecc, inset -1px -1px 2px #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+.WWC {
+    background: -webkit-linear-gradient(120deg, #ff6f91, #59b1a7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* color: #2a9d8f; */
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+    color: rgba(240, 240, 240, 0.849);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+}
