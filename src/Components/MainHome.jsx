@@ -5,6 +5,7 @@ import CHART from './Chart.js';
 import COUNTRY from './Country.js';
 import CARDS from './CardsDisplay.js';
 import { fetchData } from './API/Api.js';
+import LOAD from "./Loading.js"
 import '../App.css';
 import "../Styles/country.css";
 
@@ -15,6 +16,7 @@ const MainHome = () => {
     const [data, setData] = useState({});               // world wide data
     const [country, setCountry] = useState('');          // country picker 
     const [state, setState] = useState('');              //  determine state using geolocation
+    const [loading, setLoading] = useState(false);
 
 
 
@@ -28,11 +30,11 @@ const MainHome = () => {
 
     useEffect(() => {
         console.log(data);
-    }, [])
+    }, [data])
 
 
 
-    //  Select the Country for details Visualisation
+    //  Select the Country for details Visualisation in the Cards
     const country_ChangeHnadler = async (coun) => {
         console.log(coun);
         const fetched_DATA = await fetchData(coun);
@@ -46,6 +48,7 @@ const MainHome = () => {
     // Getting Users Location  -----
     const Current_Location = async (position) => {
         try {
+            setLoading(true);
             const { latitude, longitude } = position.coords;
             console.log(latitude, longitude);
             const res = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=3697969502744aa2862b2adf7f520d3a`)
@@ -55,6 +58,7 @@ const MainHome = () => {
             var STATE = Actual_Object.results[0].components.state;
             console.log("STATE : ", STATE);
             setState(STATE);
+            setLoading(false);
         }
         catch (error) {
             console.log(error);
@@ -71,7 +75,9 @@ const MainHome = () => {
 
     //  ------>    Method to get the position of the device
     useEffect(() => {
+        setLoading(true);
         navigator.geolocation.getCurrentPosition(Current_Location, console.log);
+        setLoading(false);
     }, []);
 
 
@@ -81,15 +87,13 @@ const MainHome = () => {
             <div className="self_container" >
                 <div style={{ marginTop: "0px", paddingTop: "0px" }} className="country_search">
                     <img src="https://i.ibb.co/7QpKsCX/image.png" alt="COVID - 19 TRACKER"
-                        // width="400rem"
-                        // height="80rem"
                         id="heading"
                         className="country_search"
                         style={{ alignItems: "center", justifyContent: "center", textAlign: "center" }}
                     />
                 </div>
 
-                {data && country &&
+                {data &&
                     < CARDS
                         data={data}
                         country={country}
@@ -100,7 +104,7 @@ const MainHome = () => {
                 />
 
                 {state && data &&
-                    <CHART
+                    < CHART
                         data={data}
                         country={country}
                         state={state}

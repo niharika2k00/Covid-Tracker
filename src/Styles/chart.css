@@ -9,6 +9,16 @@
     font-weight: 700;
 }
 
+#country_name {
+    color: crimson;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+}
+
 #details {
     margin-top: 6rem;
 }

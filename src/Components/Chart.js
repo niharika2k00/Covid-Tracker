@@ -8,8 +8,9 @@ import ReactMapGL, { Marker, LinearInterpolator } from 'react-map-gl';
 
 
 
-const Chart = ({ data, country, state }) => {
 
+const Chart = (props) => {
+    const { data = { latitude: 0, longitude: 0 }, country, state } = props;
     const { confirmed, recovered, deaths, longitude, latitude } = data;
     const [dailyData, setDailyData] = useState([]);     // GLOBAL DATA ---- taking array as we have to map this later
     const [stateData, setStateData] = useState([]);      // taking array as we have]
@@ -217,55 +218,78 @@ const Chart = ({ data, country, state }) => {
     return (
         <div>
             <div>
-                <Row>
-                    <Col md={7} xs={12} lg={7}>
-                        <h3 id="state_name">{country} </h3>
-                        <div style={{ borderRadius: "50%" }}>
-                            <ReactMapGL
-                                getCursor={(e) => {
-                                    if (e.isDragging) setTransitionDuration(0);
-                                    else setTransitionDuration(200);
-                                }}
-                                {...viewport}
-                                transitionDuration={transitionDuration}
-                                transitionInterpolator={new LinearInterpolator()}
-                                mapStyle={`mapbox://styles/mapbox/${theme}`}
-                                mapboxApiAccessToken={mapAPI_key}
-                                onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                                onClick={(e) => {
-                                    handleMarkerPosition(e);
-                                    setViewport((v) => {
-                                        return { ...v, latitude: e.lngLat[1], longitude: e.lngLat[0] };
-                                    });
-                                }}>
-                                <Marker
-                                    draggable
-                                    onDragEnd={(e) => handleMarkerPosition(e)}
-                                    latitude={latitude}
-                                    longitude={longitude}
-                                    offsetLeft={-25}
-                                    offsetTop={-50}
-                                >
-                                    <div>
-                                        <img
-                                            src={require('../Assets/pin.svg').default}
-                                            style={{ width: 50, height: 50, transformOrigin: 'center' }}
-                                            alt='marker'
-                                            draggable={false}
-                                        />
-                                    </div>
-                                </Marker>
-                            </ReactMapGL>
-                        </div>
+                {
+                    !country ?
+                        (
+                            <Row style={{ justifyContent: "center", alignItems: "center" }} >
+                                <Col md={10} lg={10} sm={10} >
+                                    {Line_Graph}
+                                </Col>
 
-                    </Col>
+                            </Row>
+                        )
+                        :
+                        (
+                            <Row>
+                                <Col md={7} xs={12} lg={7}>
+                                    <h3 id="country_name">{country} </h3>
 
-                    <Col md={5} lg={5} sm={10} >
-                        {country ? Bar_Chart : Line_Graph}
-                    </Col>
-                </Row>
+                                    {
+                                        latitude && longitude ?
+                                            (
+                                                <div style={{ borderRadius: "50%" }}>
+                                                    <ReactMapGL
+                                                        getCursor={(e) => {
+                                                            if (e.isDragging) setTransitionDuration(0);
+                                                            else setTransitionDuration(200);
+                                                        }}
+                                                        {...viewport}
+                                                        transitionDuration={transitionDuration}
+                                                        transitionInterpolator={new LinearInterpolator()}
+                                                        mapStyle={`mapbox://styles/mapbox/${theme}`}
+                                                        mapboxApiAccessToken={mapAPI_key}
+                                                        onViewportChange={(nextViewport) => setViewport(nextViewport)}
+                                                        onClick={(e) => {
+                                                            handleMarkerPosition(e);
+                                                            setViewport((v) => {
+                                                                return { ...v, latitude: e.lngLat[1], longitude: e.lngLat[0] };
+                                                            });
+                                                        }}>
+                                                        <Marker
+                                                            draggable
+                                                            onDragEnd={(e) => handleMarkerPosition(e)}
+                                                            latitude={latitude}
+                                                            longitude={longitude}
+                                                            offsetLeft={-25}
+                                                            offsetTop={-50}
+                                                        >
+                                                            <div>
+                                                                <img
+                                                                    src={require('../Assets/pin.svg').default}
+                                                                    style={{ width: 50, height: 50, transformOrigin: 'center' }}
+                                                                    alt='marker'
+                                                                    draggable={false}
+                                                                />
+                                                            </div>
+                                                        </Marker>
+                                                    </ReactMapGL>
+                                                </div>
+                                            ) : null
+                                    }
+
+                                </Col>
+
+                                <Col md={5} lg={5} sm={10} >
+                                    {/* {country ?  : Line_Graph} */}
+                                    {Bar_Chart}
+                                </Col>
+                            </Row>
+                        )
+                }
+
             </div>
 
+            <h3 className="WWC" >Your State  </h3>
             <Row className="rowTopgap" >
                 <Col lg={6} md={6} sm={12} >
                     {Doughnut_Graph}

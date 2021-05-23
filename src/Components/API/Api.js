@@ -9,37 +9,44 @@ const URL = "https://covid19.mathdro.id/api";
 export const fetchData = async (country) => {
 
     let changeable_Url = URL;
-    if (country) {
-        // https://covid19.mathdro.id/api/countries/Algeria/confirmed
-        changeable_Url = `${URL}/countries/${country}/confirmed`;                   // In original  ${URL}/countries/${country}
-    }
 
     try {
-        console.log("hello");
-        // const response = await axios.get(URL);    
-        // const { data } = await axios.get(changeable_Url);
-        // const { confirmed, recovered } = data
 
-        const response = await axios.get(changeable_Url);
-        const Obj = response.data[0];
+        if (country) {
+            // https://covid19.mathdro.id/api/countries/Algeria/confirmed
+            changeable_Url = `${URL}/countries/${country}/confirmed`;
 
+            const response = await axios.get(changeable_Url);
+            const Obj = response.data[0];
+            console.log(response)
 
-        const usableData = {
-            /* confirmed: data.confirmed,
-            recovered: data.recovered,
-            deaths: data.deaths,
-            lastUpdate: data.lastUpdate,
-           */
+            const usableData = {
+                confirmed: Obj.confirmed,
+                recovered: Obj.recovered,
+                deaths: Obj.deaths,
+                lastUpdate: Obj.lastUpdate,
+                latitude: Obj.lat,
+                longitude: Obj.long
+            };
+            console.log(usableData);
+            return usableData;
+        }
 
-            confirmed: Obj.confirmed,
-            recovered: Obj.recovered,
-            deaths: Obj.deaths,
-            lastUpdate: Obj.lastUpdate,
-            latitude: Obj.lat,
-            longitude: Obj.long
-        };
-        console.log(usableData);
-        return usableData;
+        else {
+            // const response = await axios.get(URL);
+            const { data } = await axios.get(changeable_Url);
+            // const { confirmed, recovered } = data
+
+            const usableData = {
+                confirmed: data.confirmed,
+                recovered: data.recovered,
+                deaths: data.deaths,
+                lastUpdate: data.lastUpdate,
+            };
+            console.log(usableData);
+            return usableData;
+        }
+
     } catch (error) {
         console.log(error);
     }

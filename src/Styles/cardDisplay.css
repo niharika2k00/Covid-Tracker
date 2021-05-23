@@ -15,6 +15,14 @@ section {
     padding: 2rem 0;
 }
 
+.card-title {
+    margin-bottom: 0px;
+}
+
+.card-subtitle {
+    margin-top: 4px;
+}
+
 #infected {
     font-family: 'Newsreader', serif;
     font-weight: 700;
@@ -96,8 +104,8 @@ section .section-title {
 }
 
 .frontside .card, .backside .card {
-    height: 12rem;
-    width: 24rem;
+    height: 13rem;
+    width: 25rem;
 }
 
 .backside .card a {
@@ -106,8 +114,8 @@ section .section-title {
 }
 
 .icon {
-    padding-top: 1rem;
-    ;
+    padding: .6rem;
+    margin-bottom: 6px;
 }
 
 .ico_big {

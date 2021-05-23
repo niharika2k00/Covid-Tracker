@@ -5,17 +5,16 @@ import '../Styles/cardDisplay.css';
 import CountUp from 'react-countup';
 
 
-const CardsDisplay = ({ data: { confirmed, deaths, lastUpdate, recovered }, country }) => {
+const CardsDisplay = (props) => {
 
-    // const { confirmed, deaths, lastUpdate, recovered } = props.data;
+    const { data = { confirmed: 0 }, country } = props;         // passing initial values 
+    const { confirmed, deaths, lastUpdate, latitude, longitude, recovered } = data;
 
-
-
-    // console.log(confirmed);
-    if (!confirmed)
-        return "Loading ..";
+    // const { data = { {confirmed: 0}, deaths, lastUpdate, recovered }, country } = props;
+    // const { confirmed: 0, deaths, lastUpdate, recovered } = data;
 
 
+    console.log(data)
     console.log(country)
 
 
@@ -23,7 +22,7 @@ const CardsDisplay = ({ data: { confirmed, deaths, lastUpdate, recovered }, coun
     return (
         <div style={{ marginTop: "4rem", paddingTop: "1rem" }}  >
             <Row>
-                <Col md={4} xs={12} sm={12} >
+                <Col md={4} xs={12} sm={12}  >
                     <div className="image-flip" ontouchstart="this.classList.toggle('hover');">
                         <div className="mainflip">
                             <div className="frontside">
@@ -31,14 +30,28 @@ const CardsDisplay = ({ data: { confirmed, deaths, lastUpdate, recovered }, coun
                                     <div className="card-body text-center">
                                         {/* <p><img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image" /></p> */}
                                         <h4 className="card-title" id="infected">Infected</h4>
-                                        <h5>in  {country} </h5>
+                                        {country ? (<h5>in  {country} </h5>) : null}
+
                                         <Card.Title>
-                                            <CountUp
-                                                start={0}
-                                                end={confirmed.value}
-                                                duration={2.5}
-                                                separator=","
-                                            />
+                                            {
+                                                confirmed && !country ?
+                                                    (
+                                                        <CountUp
+                                                            start={0}
+                                                            end={confirmed.value}
+                                                            duration={2.5}
+                                                            separator=","
+                                                        />
+                                                    ) :
+                                                    country ?
+                                                        (<CountUp
+                                                            start={0}
+                                                            end={confirmed}
+                                                            duration={2.5}
+                                                            separator=","
+                                                        />) :
+                                                        null
+                                            }
                                         </Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted"> {new Date(lastUpdate).toDateString()} </Card.Subtitle>
                                         <div className="icon"><i className="far fa-plus-square ico_big" style={{ color: "#008000" }}></i></div>
@@ -66,14 +79,27 @@ const CardsDisplay = ({ data: { confirmed, deaths, lastUpdate, recovered }, coun
                                     <div className="card-body text-center">
                                         {/* <p><img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image" /></p> */}
                                         <h4 className="card-title" id="recovered" >Recovered</h4>
-                                        <h5>in  {country} </h5>
+                                        {country ? (<h5>in  {country} </h5>) : null}
                                         <Card.Title>
-                                            <CountUp
-                                                start={0}
-                                                end={recovered.value}
-                                                duration={2.5}
-                                                separator=","
-                                            />
+                                            {
+                                                recovered && !country ?
+                                                    (
+                                                        <CountUp
+                                                            start={0}
+                                                            end={recovered.value}
+                                                            duration={2.5}
+                                                            separator=","
+                                                        />
+                                                    ) :
+                                                    country ?
+                                                        (<CountUp
+                                                            start={0}
+                                                            end={recovered}
+                                                            duration={2.5}
+                                                            separator=","
+                                                        />) :
+                                                        null
+                                            }
                                         </Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted"> {new Date(lastUpdate).toDateString()} </Card.Subtitle>
                                         {/* <a href="#" className="btn btn-primary btn-sm"><i className="fa fa-plus"></i></a>*/}
@@ -101,14 +127,27 @@ const CardsDisplay = ({ data: { confirmed, deaths, lastUpdate, recovered }, coun
                                     <div className="card-body text-center">
                                         {/* <p><img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image" /></p> */}
                                         <h4 className="card-title" id="death">Death</h4>
-                                        <h5>in  {country} </h5>
+                                        {country ? (<h5>in  {country} </h5>) : null}
                                         <Card.Title>
-                                            <CountUp
-                                                start={0}
-                                                end={deaths.value}
-                                                duration={2.5}
-                                                separator=","
-                                            />
+                                            {
+                                                deaths && !country ?
+                                                    (
+                                                        <CountUp
+                                                            start={0}
+                                                            end={deaths.value}
+                                                            duration={2.5}
+                                                            separator=","
+                                                        />
+                                                    ) :
+                                                    country ?
+                                                        (<CountUp
+                                                            start={0}
+                                                            end={deaths}
+                                                            duration={2.5}
+                                                            separator=","
+                                                        />) :
+                                                        null
+                                            }
                                         </Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted"> {new Date(lastUpdate).toDateString()} </Card.Subtitle>
                                         {/* <a href="#" className="btn btn-primary btn-sm"><i className="fa fa-plus"></i></a> */}
@@ -133,4 +172,4 @@ const CardsDisplay = ({ data: { confirmed, deaths, lastUpdate, recovered }, coun
     )
 }
 
-export default CardsDisplay
+export default CardsDisplay;
