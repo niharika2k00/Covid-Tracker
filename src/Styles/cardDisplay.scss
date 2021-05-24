@@ -128,8 +128,13 @@ section {
     background: #ffffff;
     border-radius: 10px;
     p {
-      font-size: 2rem;
+      font-size: 1.6rem;
       line-height: 160%;
+      text-align: center;
+      justify-content: center;
+      //   padding: 3rem auto !important;
+      margin: 3rem auto;
+      align-items: center;
       color: rgb(255, 245, 245);
     }
   }

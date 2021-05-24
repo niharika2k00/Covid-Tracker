@@ -14,8 +14,8 @@ const CardsDisplay = (props) => {
     // const { confirmed: 0, deaths, lastUpdate, recovered } = data;
 
 
-    console.log(data)
-    console.log(country)
+    // console.log(data)
+    // console.log(country)
 
 
 
@@ -59,7 +59,7 @@ const CardsDisplay = (props) => {
                         </div>
 
                         <div className="back" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80)" }} >
-                            <p className="text-shadow">CORONA</p>
+                            <p className="text-shadow">SARS-CoV-2</p>
                         </div>
                     </div>
                 </Col>
@@ -96,8 +96,8 @@ const CardsDisplay = (props) => {
                             </div>
                         </div>
 
-                        <div className="back" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80)" }} >
-                            <p className="text-shadow">CORONA</p>
+                        <div className="back" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584110007451-c9981a3496dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)" }} >
+                            <p className="text-shadow">Wear Mask</p>
                         </div>
                     </div>
                 </Col>
@@ -134,8 +134,8 @@ const CardsDisplay = (props) => {
                             </div>
                         </div>
 
-                        <div className="back" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80)" }} >
-                            <p className="text-shadow">CORONA</p>
+                        <div className="back" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1587814969489-e5df12e17391?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1056&q=80)" }} >
+                            {/* <p className="text-shadow">CORONA</p> */}
                         </div>
                     </div>
                 </Col>
@@ -146,4 +146,3 @@ const CardsDisplay = (props) => {
 }
 
 export default CardsDisplay;
-{/* <div className="icon"><i className="far fa-heart ico_big"></i></div> */ }

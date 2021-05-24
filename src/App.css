@@ -24,7 +24,7 @@ html {
 #heading {
     width: 20rem;
     height: 6rem;
-    color: rgba(255, 255, 255, 0.843));
+    /* color: rgba(238, 233, 233, 0.843)); */
 }
 
 @media (max-width: 450px) {
