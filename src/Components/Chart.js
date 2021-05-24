@@ -114,7 +114,7 @@ const Chart = (props) => {
                     datasets: [
                         {
                             label: 'Infected',
-                            backgroundColor: ['#cdb4db', '#b5e48c', 'crimson'],
+                            backgroundColor: ['#7bdff2', '#b9e769', 'crimson'],
                             data: [confirmed, recovered, deaths],
                             borderWidth: 0,
                             // barThickness: "100",
@@ -154,7 +154,7 @@ const Chart = (props) => {
                             label: 'People',
                             data: [self_state.confirmed, self_state.recovered, self_state.deaths],
                             // data: [confirmed.value, recovered.value, deaths.value],
-                            backgroundColor: ['#cdb4db', '#b5e48c', 'crimson'],
+                            backgroundColor: ['#7bdff2', '#b9e769', 'crimson'],
                             hoverOffset: 1,
                             borderRadius: 0,
                             borderWidth: 0,
@@ -185,8 +185,8 @@ const Chart = (props) => {
     let mapWidth = 730;
     let mapHeight = 450;
     if (window.innerWidth <= 600) {
-        mapWidth = 500;
-        mapHeight = 550;
+        mapWidth = 350;
+        mapHeight = 320;
     }
 
 
@@ -221,8 +221,8 @@ const Chart = (props) => {
                 {
                     !country ?
                         (
-                            <Row style={{ justifyContent: "center", alignItems: "center" }} >
-                                <Col md={10} lg={10} sm={10} >
+                            <Row style={{ justifyContent: "center", alignItems: "center" }} id="line_bottomgap"  >
+                                <Col md={10} lg={10} sm={10} style={{ height: "10rem" }} >
                                     {Line_Graph}
                                 </Col>
 
@@ -276,10 +276,9 @@ const Chart = (props) => {
                                                 </div>
                                             ) : null
                                     }
-
                                 </Col>
 
-                                <Col md={5} lg={5} sm={10} >
+                                <Col md={5} lg={5} sm={10} id="bar_style" >
                                     {/* {country ?  : Line_Graph} */}
                                     {Bar_Chart}
                                 </Col>
@@ -289,9 +288,12 @@ const Chart = (props) => {
 
             </div>
 
-            <h3 className="WWC" >Your State  </h3>
+
+            <section>
+                <h3 id="LState" > Local State  </h3>
+            </section>
             <Row className="rowTopgap" >
-                <Col lg={6} md={6} sm={12} >
+                <Col lg={6} md={6} sm={8} >
                     {Doughnut_Graph}
                 </Col>
 

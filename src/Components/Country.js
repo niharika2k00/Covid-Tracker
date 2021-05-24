@@ -22,11 +22,36 @@ const Country = ({ country_ChangeHnadler }) => {
         // console.log(countries);  // array of obj [{} {} {}]
     }, [countries]);
 
+    var Mobile = window.innerWidth;
+
+
 
 
     return (
         <div style={{ marginTop: "4rem", paddingTop: "1rem" }}>
-            <h3 className="WWC" >World Wide COVID Live Updates  </h3>
+
+            {
+                Mobile < 550 ?
+                    (
+                        <div style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+                            <p><i className="fas fa-globe-americas" style={{ paddingRight: "3px", color: "black", fontSize: "1.5rem" }}></i>
+                                <span className="WWC">World Wide COVID Live Updates</span> </p>
+                        </div>
+                    )
+                    :
+                    (
+                        <div className="minihead">
+                            <h2 className="subheading">
+                                {" "}
+                                <i className="fas fa-globe-americas" style={{ paddingRight: "9px" }}></i>
+                                <span>  World Wide COVID Live Updates </span>{" "}
+                            </h2>
+                        </div >
+                    )
+            }
+
+
+
             <form onChange={(e) => { country_ChangeHnadler(e.target.value) }} className=" country_search"  >
                 <select className="form-select " aria-label="Default select example" id="panel"  >
                     <option selected value="global">Global</option>
@@ -37,7 +62,7 @@ const Country = ({ country_ChangeHnadler }) => {
                     }
                 </select>
             </form>
-        </div>
+        </div >
     )
 }
 
