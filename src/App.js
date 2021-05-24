@@ -13,7 +13,7 @@ const App = () => {
       <div >
 
         <main >
-          {/* <Route path='/' component={INTROSCREEN} exact /> */}
+          <Route path='/' component={INTROSCREEN} exact />
           <Route path='/covidupdates' component={HOMESCREEN} exact />
         </main>
 

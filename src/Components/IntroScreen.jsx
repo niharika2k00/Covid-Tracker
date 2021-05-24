@@ -8,41 +8,78 @@ import '../Styles/introscreen.css';
 
 const IntroScreen = () => {
 
+
+    const Mobile = window.innerWidth;
+
     return (
-        <div style={{ backgroundColor: 'black' }}>
+        <div style={{ backgroundColor: '#2ec4b6' }}>
             <Link to='/covidupdates'>
-                <section className="Button" id="btncenter" Style={{ marginLeft: "2rem", paddingLeft: "2rem" }}>
-                    <a className="Button-btn" Style={{ marginLeft: "2rem", paddingLeft: "2rem" }} href="/">Updates </a>
-                </section>
+                <div className="butn">
+                    <h1>
+                        COVID Up<span className="first">da</span>tes
+                    </h1>
+                </div>
+
             </Link>
 
-            <Particles
-                params={{
-                    "particles": {
-                        "line_linked": {
-                            "color": "#FFFFFF"
-                        },
-                        "number": {
-                            "value": 130
-                        },
-                        "size": {
-                            "value": 3
-                        }
-                    },
-                    "interactivity": {
-                        "events": {
-                            "onhover": {
-                                "enable": true,
-                                "mode": "repulse"
+
+
+            { Mobile < 550 ?
+                (
+                    <Particles
+                        className=" particles_style"
+                        params={{
+                            "particles": {
+                                "line_linked": {
+                                    "color": "#fff"
+                                },
+                                "number": {
+                                    "value": 40
+                                },
+                                "size": {
+                                    "value": 3
+                                }
+                            },
+                            "interactivity": {
+                                "events": {
+                                    "onhover": {
+                                        "enable": true,
+                                        "mode": "repulse"
+                                    }
+                                }
                             }
-                        }
-                    }
-                }}
-                style={{
-                    width: '100%',
-                    background: `#000000`
-                }}
-            />
+                        }}
+                    />
+                )
+                :
+                (
+                    <Particles
+                        className=" particles_style"
+                        params={{
+                            "particles": {
+                                "line_linked": {
+                                    "color": "#fff"
+                                },
+                                "number": {
+                                    "value": 130
+                                },
+                                "size": {
+                                    "value": 3
+                                }
+                            },
+                            "interactivity": {
+                                "events": {
+                                    "onhover": {
+                                        "enable": true,
+                                        "mode": "repulse"
+                                    }
+                                }
+                            }
+                        }}
+                    />
+                )
+            }
+
 
 
         </div>
