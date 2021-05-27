@@ -27,13 +27,22 @@ html {
     /* color: rgba(238, 233, 233, 0.843)); */
 }
 
+.mycontainer {
+    margin: 1.2rem 1.5rem;
+    padding: 1.2rem 1.5rem;
+}
+
 @media (max-width: 450px) {
     #heading {
         width: 18rem;
         height: 5.5rem;
     }
     .rowTopgap {
-        padding: .4rem 0;
-        margin: .4rem 0;
+        padding: .4rem 0 3rem 0;
+        margin: .4rem 0 3rem 0;
     }
 }
+
+/*  ">0.2%",
+      "not dead",
+      "not op_mini all" */

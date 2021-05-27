@@ -81,8 +81,8 @@ section {
     opacity: 0;
     top: 0px;
     left: 0px;
-    width: 100%;
-    height: 100%;
+    width: 10rem;
+    height: 10rem;
     transform: rotateY(-180deg);
   }
   &:hover {
@@ -115,7 +115,7 @@ section {
   display: inline-block;
   margin-right: 2px;
   margin-bottom: 1em;
-  width: 340px;
+  width: 400px;
   > .front,
   > .back {
     display: block;
@@ -156,9 +156,30 @@ section {
   margin-top: 3rem;
   padding-top: 1rem;
 }
+.myflex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+// ------------------   RESPONSIVE FOR 450 AND LESS --------------------
 @media (max-width: 450px) {
   #mob_view {
     margin-top: 1rem;
+    padding: 1px;
+    width: 100%;
   }
+  .flip {
+    margin-right: 2px;
+    margin-bottom: 1em;
+    width: 100%;
+    height: 16rem;
+  }
+  .myflex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
 }

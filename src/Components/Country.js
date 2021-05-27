@@ -34,8 +34,9 @@ const Country = ({ country_ChangeHnadler }) => {
                 Mobile < 550 ?
                     (
                         <div style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
-                            <p><i className="fas fa-globe-americas" style={{ paddingRight: "3px", color: "black", fontSize: "1.5rem" }}></i>
-                                <span className="WWC">World Wide COVID Live Updates</span> </p>
+                            <p>
+                                <span className="WWC_mob">World  <i className="fas fa-globe-americas" style={{ paddingRight: "3px", color: "black", fontSize: "1.5rem" }}></i> Wide COVID Live Updates</span>
+                            </p>
                         </div>
                     )
                     :
@@ -43,7 +44,7 @@ const Country = ({ country_ChangeHnadler }) => {
                         <div className="minihead">
                             <h2 className="subheading">
                                 {" "}
-                                <i className="fas fa-globe-americas" style={{ paddingRight: "9px" }}></i>
+                                <i className="fas fa-globe-americas" style={{ paddingRight: "9px", fontSize: "2rem" }}></i>
                                 <span>  World Wide COVID Live Updates </span>{" "}
                             </h2>
                         </div >
@@ -54,7 +55,7 @@ const Country = ({ country_ChangeHnadler }) => {
 
             <form onChange={(e) => { country_ChangeHnadler(e.target.value) }} className=" country_search"  >
                 <select className="form-select " aria-label="Default select example" id="panel"  >
-                    <option selected value="global">Global</option>
+                    <option selected value="global" placeholder="Global" >Pick a country</option>
                     {
                         countries.map((country, i) =>
                             <option value={country} key={i} >{country}</option>

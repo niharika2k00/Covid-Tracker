@@ -54,6 +54,18 @@
     cursor: pointer;
 }
 
+.butn_mob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 80px;
+    margin: -50px 0 0 -150px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .butn:hover {
     animation: border-flicker 2s linear forwards;
 }
@@ -258,6 +270,101 @@
     /* background-color: black; */
 }
 
+.custom-btn {
+    color: #fff;
+    width: 130px;
+    height: 40px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-6 {
+    background: #8ce436;
+    line-height: 40px;
+    padding: 0;
+    border: none;
+    box-shadow: 0 0 5px #8ce436;
+}
+
+.btn-6 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-6:hover {
+    background: transparent;
+}
+
+.btn-6:before, .btn-6:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 2px;
+    background: #8ce436;
+    box-shadow: 0 0 5px #8ce436;
+}
+
+.btn-6:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+}
+
+.btn-6:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+}
+
+.btn-6:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.btn-6:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+}
+
+.btn-6 span:before, .btn-6 span:after {
+    position: absolute;
+    content: "";
+    background: #8ce436;
+    box-shadow: 0 0 5px #8ce436;
+}
+
+.btn-6 span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+}
+
+.btn-6 span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+}
+
+.btn-6 span:hover:before {
+    width: 100%;
+}
+
+.btn-6 span:hover:after {
+    width: 100%;
+}
+
 @media (max-width: 450px) {
     .butn {
         width: 300px;
@@ -265,7 +372,7 @@
         margin: -50px 0 0 -150px;
         text-align: center;
         border-radius: 8px;
-        border: 3px solid rgb(0, 40, 70);
+        border: 4px solid rgb(240, 234, 234);
         cursor: pointer;
     }
     .butn h1 {
@@ -273,6 +380,6 @@
         font-weight: 300;
         font-size: 2rem;
         margin: 15px 0 0;
-        color: rgba(120, 0, 50, .5);
+        color: #e71d36;
     }
 }

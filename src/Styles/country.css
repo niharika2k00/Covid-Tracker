@@ -7,7 +7,8 @@
 }
 
 #panel {
-    border-radius: 5rem;
+    border-radius: .5rem;
+    /* width: 40%; */
     border: 2.6px solid rgb(124, 118, 118);
     padding: .4rem;
     box-shadow: inset 3px 2px 2px #babecc, inset -1px -1px 2px #fff;
@@ -19,9 +20,11 @@
     padding: 0.2rem;
     margin-bottom: 2rem;
     font-size: 1.2rem;
-    background: -webkit-linear-gradient(#eee, #d90429);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    /* background: -webkit-linear-gradient(#eee, #d90429); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
     font-weight: 700;
 }
 
@@ -41,6 +44,9 @@
     position: relative;
     font-weight: 700;
     font-size: 34px;
+    /* color: white; */
+    /* text-shadow: 2px 2px 4px #000000; */
+    text-shadow: 0 0 3px #FF0000, 0 0 2px #0000FF;
 }
 
 .subheading span:before, .subheading span:after {
@@ -76,41 +82,23 @@
 
 @media (max-width: 450px) {
     .minihead {
-        padding: 2.5rem;
         font-weight: 500;
-        color: #3d405b;
     }
     .subheading span {
-        display: inline-block;
-        position: relative;
-        font-weight: 700;
         font-size: 1.6rem;
     }
     .subheading span:before, .subheading span:after {
-        content: "";
-        position: absolute;
-        height: 5px;
-        border-bottom: 0px solid #ef476f;
-        border-top: 0px solid rgb(230, 208, 208);
-        top: 16px;
         width: 100px;
     }
-    .subheading span:before {
-        right: 100%;
-        margin-right: 80px;
-    }
-    .subheading span:after {
-        left: 100%;
-        margin-left: 30px;
-    }
-    .subheading span ::after {
-        content: "";
-        height: 3px;
-        background: #1b1b1b;
-        position: absolute;
-        left: 100%;
-        top: 50%;
-        margin-top: -3px;
-        width: 3000px;
+    .WWC_mob {
+        padding: 0.2rem;
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        /* color: white; */
+        text-shadow: 1px 1px 2px #ff0396;
+        /* background: -webkit-linear-gradient(#eee, #d90429); */
+        /* -webkit-background-clip: text; */
+        /* -webkit-text-fill-color: transparent; */
+        font-weight: 700;
     }
 }

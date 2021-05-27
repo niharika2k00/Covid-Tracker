@@ -7,7 +7,7 @@ const URL = "https://covid19.mathdro.id/api";
 
 //  ------------  FETCHING GLOBAL DATA (for Bar Chart)  ------------
 export const fetchData = async (country) => {
-
+    const URL = "https://covid19.mathdro.id/api";
     let changeable_Url = URL;
 
     try {

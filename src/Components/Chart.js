@@ -5,7 +5,7 @@ import '../Styles/chart.css';
 import { fetch_DailyData, fetch_StateData } from './API/Api.js';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import ReactMapGL, { Marker, LinearInterpolator } from 'react-map-gl';
-
+// import mapboxgl from '!mapbox-gl';
 
 
 
@@ -114,7 +114,7 @@ const Chart = (props) => {
                     datasets: [
                         {
                             label: 'Infected',
-                            backgroundColor: ['#7bdff2', '#b9e769', 'crimson'],
+                            backgroundColor: ['#64c3d6', '#a8e440', 'crimson'],
                             data: [confirmed, recovered, deaths],
                             borderWidth: 0,
                             // barThickness: "100",
@@ -154,7 +154,7 @@ const Chart = (props) => {
                             label: 'People',
                             data: [self_state.confirmed, self_state.recovered, self_state.deaths],
                             // data: [confirmed.value, recovered.value, deaths.value],
-                            backgroundColor: ['#7bdff2', '#b9e769', 'crimson'],
+                            backgroundColor: ['#64c3d6', '#a8e440', 'crimson'],
                             hoverOffset: 1,
                             borderRadius: 0,
                             borderWidth: 0,
@@ -180,12 +180,22 @@ const Chart = (props) => {
 
 
 
-
+    var WIDTH = window.innerWidth;
 
     let mapWidth = 730;
     let mapHeight = 450;
-    if (window.innerWidth <= 600) {
-        mapWidth = 350;
+    if (WIDTH <= 370 || WIDTH === 360) {
+        mapWidth = 344;
+        mapHeight = 320;
+    }
+
+    else if (WIDTH >= 390 && WIDTH <= 400) {
+        mapWidth = 376;
+        mapHeight = 320;
+    }
+
+    else if (WIDTH === 393) {
+        mapWidth = 376;
         mapHeight = 320;
     }
 
@@ -199,7 +209,7 @@ const Chart = (props) => {
         height: mapHeight,
         latitude: 37.7577,
         longitude: -122.4376,
-        zoom: 1,
+        zoom: 1.5,
     });
     const [marker, setMarker] = useState({ lat: 0, lan: 0, });
     const [transitionDuration, setTransitionDuration] = useState(200);
@@ -230,15 +240,16 @@ const Chart = (props) => {
                         )
                         :
                         (
-                            <Row>
-                                <Col md={7} xs={12} lg={7}>
+                            <Row style={{ margin: "0rem", justifyContent: "center", alignItems: "center" }} >
+                                <Col md={7} xs={12} lg={7} style={{ padding: ".6rem", justifyContent: "center", alignItems: "center" }}>
                                     <h3 id="country_name">{country} </h3>
 
                                     {
                                         latitude && longitude ?
                                             (
-                                                <div style={{ borderRadius: "50%" }}>
+                                                <div className="map_shadow" >
                                                     <ReactMapGL
+                                                        style={{ justifyContent: "center", alignItems: "center" }}
                                                         getCursor={(e) => {
                                                             if (e.isDragging) setTransitionDuration(0);
                                                             else setTransitionDuration(200);
@@ -256,12 +267,12 @@ const Chart = (props) => {
                                                             });
                                                         }}>
                                                         <Marker
-                                                            draggable
+                                                            draggable={false}
                                                             onDragEnd={(e) => handleMarkerPosition(e)}
                                                             latitude={latitude}
                                                             longitude={longitude}
-                                                            offsetLeft={-25}
-                                                            offsetTop={-50}
+                                                            offsetLeft={-5}
+                                                            offsetTop={-70}
                                                         >
                                                             <div>
                                                                 <img

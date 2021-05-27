@@ -14,12 +14,21 @@ const IntroScreen = () => {
     return (
         <div style={{ backgroundColor: '#2ec4b6' }}>
             <Link to='/covidupdates'>
-                <div className="butn">
-                    <h1>
-                        COVID Up<span className="first">da</span>tes
-                    </h1>
-                </div>
-
+                {Mobile < 550 ?
+                    (
+                        <div className="butn_mob">
+                            <button class="custom-btn btn-6"><span>COVID Updates</span></button>
+                        </div>
+                    )
+                    :
+                    (
+                        <div className="butn">
+                            <h1>
+                                COVID Up<span className="first">da</span>tes
+                            </h1>
+                        </div>
+                    )
+                }
             </Link>
 
 
