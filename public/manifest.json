@@ -1,16 +1,14 @@
 
 
 {
-  "short_name": "Covid-Tracker",
-  "name": "Covid-Tracker",
   "icons": [
     {
-      "src": "logos/flake_pink192.png",
+      "src": "logos/virus192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logos/flake_pink512.png",
+      "src": "logos/virus512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -19,8 +17,11 @@
   "scope": "/",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color" : "#f69435",
+  "background_color" : "#f69435",
+  "name" : "Covid-Tracker",
+  "short_name" : "Covid-Tracker",
+
 }
 
 
