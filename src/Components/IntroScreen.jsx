@@ -12,7 +12,7 @@ const IntroScreen = () => {
     const Mobile = window.innerWidth;
 
     return (
-        <div style={{ backgroundColor: '#2ec4b6' }}>
+        <div style={{ backgroundColor: '#03071e' }}>
             <Link to='/covidupdates'>
                 {Mobile < 550 ?
                     (
@@ -33,7 +33,7 @@ const IntroScreen = () => {
 
 
 
-            { Mobile < 550 ?
+            {Mobile < 550 ?
                 (
                     <Particles
                         className=" particles_style"
@@ -70,7 +70,7 @@ const IntroScreen = () => {
                                     "color": "#fff"
                                 },
                                 "number": {
-                                    "value": 130
+                                    "value": 110
                                 },
                                 "size": {
                                     "value": 3

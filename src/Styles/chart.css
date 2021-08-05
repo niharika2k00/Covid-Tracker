@@ -50,8 +50,8 @@
 }
 
 .infected {
-    color: #00b2ca;
-    background-color: #d2eff3;
+    color: #005f73;
+    background-color: rgba(170, 207, 214, 0.475)
 }
 
 .recovered {

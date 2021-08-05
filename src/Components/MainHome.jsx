@@ -83,7 +83,7 @@ const MainHome = () => {
 
 
     return (
-        <div style={{ backgroundColor: "#edf6f968" /* "#fcfcfc" */ }} >
+        <div style={{ backgroundColor: "#fff" /* "#e8eaeb68" */ }} >
             <div /*  className="self_container" */ className="" >
                 <div style={{ marginTop: "0px", paddingTop: "0px" }} className="country_search">
                     <img src="https://i.ibb.co/7QpKsCX/image.png" alt="COVID - 19 TRACKER"

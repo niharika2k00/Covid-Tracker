@@ -8,11 +8,12 @@
 
 #panel {
     border-radius: .5rem;
-    /* width: 40%; */
-    border: 2.6px solid rgb(124, 118, 118);
+    /* border: 2.6px solid rgb(124, 118, 118); */
     padding: .4rem;
-    box-shadow: inset 3px 2px 2px #babecc, inset -1px -1px 2px #fff;
+    /* box-shadow: inset 3px 2px 2px #babecc, inset -1px -1px 2px #fff; */
     text-decoration: none;
+    border: none;
+    border-bottom: 3px solid rgb(240, 76, 131);
     outline: none;
 }
 

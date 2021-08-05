@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import '../Styles/chart.css';
 import { fetch_DailyData, fetch_StateData } from './API/Api.js';
@@ -9,7 +9,8 @@ import ReactMapGL, { Marker, LinearInterpolator } from 'react-map-gl';
 
 
 
-const Chart = (props) => {
+const Chart = React.memo((props) => {
+
     const { data = { latitude: 0, longitude: 0 }, country, state } = props;
     const { confirmed, recovered, deaths, longitude, latitude } = data;
     const [dailyData, setDailyData] = useState([]);     // GLOBAL DATA ---- taking array as we have to map this later
@@ -27,10 +28,11 @@ const Chart = (props) => {
         DAILY_DATA();
     }, []);
 
+
+
     useEffect(() => {
         // console.log(dailyData);  // array of obj [{} {} {}]
     }, [dailyData]);
-
 
 
 
@@ -81,7 +83,7 @@ const Chart = (props) => {
                             {
                                 data: dailyData.map(({ confirmed }) => confirmed),
                                 label: 'Infected',
-                                borderColor: '#4ecdc4',
+                                borderColor: '#005f73',
                                 fill: true,
                                 width: "100",
                                 height: 100,
@@ -143,6 +145,50 @@ const Chart = (props) => {
     );
 
 
+    const Bar_Chart1 = () => {
+
+        return (
+            <>
+                {
+                    confirmed ? (
+                        <Bar
+                            data={{
+                                labels: ['Infected', 'Recovered', 'Deaths'],
+                                datasets: [
+                                    {
+                                        label: 'Infected',
+                                        backgroundColor: ['#005f73', '#e9ff70', 'crimson'],
+                                        data: [confirmed, recovered, deaths],
+                                        borderWidth: 0,
+                                        // barThickness: "100",
+                                        // barPercentage: 0.5,
+                                        // categoryPercentage: 0.5
+                                        categoryPercentage: 0.5, barPercentage: 1.0
+                                    },
+                                ],
+                            }}
+                            width=" 100%"
+                            height={100}
+                            options={{
+                                legend: { display: false },
+                                title: { display: true, text: `Current state in ${country}` },
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                defaultFontSize: "14px",
+                                legend: { display: false },
+                                // The barPercentage and categoryPercentage (the default values are 0.9 and 0.8) are used to size the bar only if barThickness is not set.
+                                scales: {
+                                    xAxes: [{ categoryPercentage: 0.5, barPercentage: 1.0 }]
+                                }
+                            }}
+                        />
+                    ) : null
+                }
+            </>
+        )
+    };
+
+
     // ------------------------------   FOR self Location(state) represented in a DOUGHNUT Graph  ----------------
     const Doughnut_Graph = (
         Object.keys(self_state).length !== 0 ? (
@@ -154,7 +200,7 @@ const Chart = (props) => {
                             label: 'People',
                             data: [self_state.confirmed, self_state.recovered, self_state.deaths],
                             // data: [confirmed.value, recovered.value, deaths.value],
-                            backgroundColor: ['#64c3d6', '#a8e440', 'crimson'],
+                            backgroundColor: ['#005f73', '#e9ff70', 'crimson'],
                             hoverOffset: 1,
                             borderRadius: 0,
                             borderWidth: 0,
@@ -291,7 +337,8 @@ const Chart = (props) => {
 
                                 <Col md={5} lg={5} sm={10} id="bar_style" >
                                     {/* {country ?  : Line_Graph} */}
-                                    {Bar_Chart}
+                                    {/* {Bar_Chart} */}
+                                    <Bar_Chart1 />
                                 </Col>
                             </Row>
                         )
@@ -319,7 +366,7 @@ const Chart = (props) => {
 
         </div>
     )
-}
+})
 
 export default Chart;
 

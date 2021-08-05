@@ -23,24 +23,6 @@ const CardsDisplay = (props) => {
 
 
         <div>
-            {/*   <Row >
-                <Col style={{ paddingRight: "0px", alignItems: "center", justifyContent: "center" }}>
-                    <p>Use preview channels to test and share dfsf sdfsfs changes a before going live</p>
-                </Col>
-
-                <Col style={{ paddingRight: "0px", alignItems: "center", justifyContent: "center" }}>
-                    <p>Use preview channels to test and share dfsf sdfsfs changes a before going live</p>
-                </Col>
-
-                <Col md={4} xs={11} sm={11}>
-                    <p>Use preview channels to test and share changes df dfdfdgdg dgedgert4e rt dfg sfdergtefdgv wsergw before going live</p>
-                </Col>
-
-            </Row> */}
-
-
-
-
             <div className="myflex">
                 <div>
                     <div style={{ paddingRight: "0px", alignItems: "center", justifyContent: "center" }}>

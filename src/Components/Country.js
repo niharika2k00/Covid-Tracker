@@ -35,7 +35,7 @@ const Country = ({ country_ChangeHnadler }) => {
                     (
                         <div style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                             <p>
-                                <span className="WWC_mob">World  <i className="fas fa-globe-americas" style={{ paddingRight: "3px", color: "black", fontSize: "1.5rem" }}></i> Wide COVID Live Updates</span>
+                                <span className="WWC_mob"> COVID Live Updates</span>
                             </p>
                         </div>
                     )
